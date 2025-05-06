@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat Dizayn</title>
+  <link rel="stylesheet" href="styles.css">
+  
+</head>
+<body>
+  <div class="chat-wrapper">
+    <div class="chat-header">💬 Chat</div>
+
+    <div class="chat-box" id="chatBox"></div>
+
+    <div class="chat-input">
+      <input type="text" id="messageInput" placeholder="Xabar yozing...">
+      <button onclick="sendMessage()">📤</button>
+    </div>
+  </div>
+
+  <script>
+    const chatBox = document.getElementById('chatBox');
+    const input = document.getElementById('messageInput');
+
+    const socket = new WebSocket('ws://localhost:8080');
+
+    socket.onmessage = function(event) {
+      const msg = document.createElement('p');
+      msg.className = 'message-bot';
+      msg.textContent = event.data;
+      chatBox.appendChild(msg);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    };
+
+    function sendMessage() {
+      const text = input.value.trim();
+      if (text) {
+        
+        const msg = document.createElement('p');
+        msg.className = 'message-user';
+        msg.textContent = text;
+        chatBox.appendChild(msg);
+        chatBox.scrollTop = chatBox.scrollHeight;
+
+        socket.send(text);
+        input.value = '';
+      }
+    }
+  </script>
+</body>
+</html>

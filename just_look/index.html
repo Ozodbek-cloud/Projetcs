@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Translation App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>O'zbekcha - Inglizcha Tarjimon</h1>
+        
+        <div class="translate-box">
+            <label for="input-text">Matnni kiriting:</label>
+            <textarea id="input-text" placeholder="Matnni shu yerga kiriting"></textarea>
+        </div>
+
+        <div class="language-select">
+            <label for="from-lang">Tilni tanlang:</label>
+            <select id="from-lang">
+                <option value="uz">O'zbekcha</option>
+                <option value="en">Inglizcha</option>
+            </select>
+            <span>→</span>
+            <select id="to-lang">
+                <option value="en">Inglizcha</option>
+                <option value="uz">O'zbekcha</option>
+            </select>
+        </div>
+
+        <button id="translate-btn">Tarjima qilish</button>
+
+        <div class="result">
+            <h3>Natija:</h3>
+            <p id="translated-text"></p>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>
